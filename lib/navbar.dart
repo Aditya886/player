@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:player/fvrt.dart';
 import 'package:player/main_screen.dart';
+import 'package:player/profile.dart';
 
 class home extends StatefulWidget {
   @override
@@ -35,13 +37,8 @@ class _homeState extends State<home> {
 
     page_one(),
 
-    Center(
-      child: Text(
-        "Wishlist is Empty!",
-        style: TextStyle(
-            fontSize: 25, fontWeight: FontWeight.w600, color: Colors.red),
-      ),
-    ),
+    menu(),
+
     Center(
       child: Text(
         "Not played!",
@@ -56,13 +53,8 @@ class _homeState extends State<home> {
             fontSize: 25, fontWeight: FontWeight.w600, color: Colors.red),
       ),
     ),
-    Center(
-      child: Text(
-        "Please Login!",
-        style: TextStyle(
-            fontSize: 25, fontWeight: FontWeight.w600, color: Colors.red),
-      ),
-    ),
+
+    profile(),
   ];
 
   @override

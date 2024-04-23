@@ -127,6 +127,7 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: height * 0.03),
                 ),
               ),
+
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -135,7 +136,7 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                 ),
               ),
               SizedBox(
-                height: height * 0.02,
+                height: height * 0.008,
               ),
               TextField(
                 decoration: InputDecoration(
@@ -176,7 +177,7 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                 )
               ),
               Container(
-                width: width * 0.8,
+                width: width * 0.9,
                 height: height * 0.24,
                 child: TabBarView(
                   controller: _tabController,
@@ -405,13 +406,13 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                             Text(
                               populor[index]['name'],
                               style: TextStyle(
-                                fontSize: height*0.017,
+                                fontSize: height*0.019,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               'Items: ${populor[index]['type']}',
-                              style: TextStyle(fontSize: height*0.013,color: Colors.grey),
+                              style: TextStyle(fontSize: height*0.014,color: Colors.grey),
                             ),
                           ],
                         ),
