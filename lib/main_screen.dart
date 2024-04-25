@@ -7,7 +7,7 @@ class page_one extends StatefulWidget {
   State<page_one> createState() => _page_oneState();
 }
 
-class _page_oneState extends State<page_one>with TickerProviderStateMixin {
+class _page_oneState extends State<page_one> with TickerProviderStateMixin {
   List<Map<String, dynamic>> recommendation = [
     {
       "img": AssetImage("assets/images/album.jpeg"),
@@ -100,16 +100,15 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
     },
   ];
 
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    TabController _tabController =
-         TabController(length: 4, vsync: this);
+    TabController _tabController = TabController(length: 4, vsync: this);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           width: width * 0.9,
@@ -124,10 +123,10 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Hello, User",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: height * 0.03),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700, fontSize: height * 0.03),
                 ),
               ),
-
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -146,36 +145,35 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                   contentPadding: EdgeInsets.symmetric(vertical: height * 0.01),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 2),
+                    borderSide:
+                        BorderSide(color: Colors.lightBlueAccent, width: 2),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey.shade300, width: 2),
+                    borderSide:
+                        BorderSide(color: Colors.grey.shade300, width: 2),
                   ),
                 ),
               ),
-
               SizedBox(height: 20),
-
               Container(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TabBar(
-                    isScrollable: true,
-                    tabAlignment: TabAlignment.start,
-                    labelColor: Colors.lightBlueAccent,
-                    indicatorColor: Colors.lightBlueAccent,
-                    unselectedLabelColor: Colors.grey,
-                    controller: _tabController,
-                    tabs: [
-                      Tab(text: "Recommendation"),
-                      Tab(text: "Latest"),
-                      Tab(text: "Popular"),
-                      Tab(text: "Hip-Hop"),
-                    ],
-                  ),
-                )
-              ),
+                  child: Align(
+                alignment: Alignment.centerLeft,
+                child: TabBar(
+                  isScrollable: true,
+                  tabAlignment: TabAlignment.start,
+                  labelColor: Colors.lightBlueAccent,
+                  indicatorColor: Colors.lightBlueAccent,
+                  unselectedLabelColor: Colors.grey,
+                  controller: _tabController,
+                  tabs: [
+                    Tab(text: "Recommendation"),
+                    Tab(text: "Latest"),
+                    Tab(text: "Popular"),
+                    Tab(text: "Hip-Hop"),
+                  ],
+                ),
+              )),
               Container(
                 width: width * 0.9,
                 height: height * 0.24,
@@ -189,14 +187,14 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                         AssetImage image = recommendation[index]['img'];
                         return Container(
                           height: height * 0.18,
-                          width: width * 0.4,
-                          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+                          width: width * 0.35,
+                          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: height * 0.14,
-                                width: width * 0.33,
+                                height: 100,
+                                width: 120,
                                 decoration: BoxDecoration(
                                   color: Colors.lightGreenAccent,
                                   borderRadius: BorderRadius.circular(10),
@@ -207,18 +205,33 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                                 ),
                               ),
                               Row(
-                                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(recommendation[index]['name'],style: TextStyle(fontWeight: FontWeight.w600,fontSize: height*0.015),),
-                                      Text(recommendation[index]['type'],style: TextStyle(color: Colors.grey,fontSize: height*0.012),),
+                                      Text(
+                                        recommendation[index]['name'],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: height * 0.015),
+                                      ),
+                                      Text(
+                                        recommendation[index]['type'],
+                                        style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: height * 0.012),
+                                      ),
                                     ],
                                   ),
-                                  IconButton(onPressed: (){
-
-                                  }, icon: Icon(Icons.play_circle,color: Colors.lightBlueAccent,))
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.play_circle,
+                                        color: Colors.lightBlueAccent,
+                                      ))
                                 ],
                               ),
                             ],
@@ -234,13 +247,14 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                         return Container(
                           height: height * 0.18,
                           width: width * 0.4,
-                          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+                          margin:
+                              EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: height * 0.14,
-                                width: width * 0.33,
+                                height: 100,
+                                width: 120,
                                 decoration: BoxDecoration(
                                   color: Colors.lightGreenAccent,
                                   borderRadius: BorderRadius.circular(10),
@@ -251,18 +265,32 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                                 ),
                               ),
                               Row(
-                                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(latest[index]['name'],style: TextStyle(fontWeight: FontWeight.w600,fontSize: height*0.015),),
-                                      Text(latest[index]['type'],style: TextStyle(color: Colors.grey,fontSize: height*0.012),),
+                                      Text(
+                                        latest[index]['name'],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: height * 0.015),
+                                      ),
+                                      Text(
+                                        latest[index]['type'],
+                                        style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: height * 0.012),
+                                      ),
                                     ],
                                   ),
-                                  IconButton(onPressed: (){
-
-                                  }, icon: Icon(Icons.play_circle,color: Colors.lightBlueAccent,))
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.play_circle,
+                                        color: Colors.lightBlueAccent,
+                                      ))
                                 ],
                               ),
                             ],
@@ -278,13 +306,14 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                         return Container(
                           height: height * 0.18,
                           width: width * 0.4,
-                          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+                          margin:
+                              EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: height * 0.14,
-                                width: width * 0.33,
+                                height: 100,
+                                width: 120,
                                 decoration: BoxDecoration(
                                   color: Colors.lightGreenAccent,
                                   borderRadius: BorderRadius.circular(10),
@@ -295,18 +324,32 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                                 ),
                               ),
                               Row(
-                                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(populor[index]['name'],style: TextStyle(fontWeight: FontWeight.w600,fontSize: height*0.015),),
-                                      Text(populor[index]['type'],style: TextStyle(color: Colors.grey,fontSize: height*0.012),),
+                                      Text(
+                                        populor[index]['name'],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: height * 0.015),
+                                      ),
+                                      Text(
+                                        populor[index]['type'],
+                                        style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: height * 0.012),
+                                      ),
                                     ],
                                   ),
-                                  IconButton(onPressed: (){
-
-                                  }, icon: Icon(Icons.play_circle,color: Colors.lightBlueAccent,))
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.play_circle,
+                                        color: Colors.lightBlueAccent,
+                                      ))
                                 ],
                               ),
                             ],
@@ -322,13 +365,14 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                         return Container(
                           height: height * 0.18,
                           width: width * 0.4,
-                          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 0),
+                          margin:
+                              EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: height * 0.14,
-                                width: width * 0.33,
+                                height: 100,
+                                width: 120,
                                 decoration: BoxDecoration(
                                   color: Colors.lightGreenAccent,
                                   borderRadius: BorderRadius.circular(10),
@@ -338,19 +382,34 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                                   ),
                                 ),
                               ),
+
                               Row(
-                                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(hip_hop[index]['name'],style: TextStyle(fontWeight: FontWeight.w600,fontSize: height*0.015),),
-                                      Text(hip_hop[index]['type'],style: TextStyle(color: Colors.grey,fontSize: height*0.012),),
+                                      Text(
+                                        hip_hop[index]['name'],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: height * 0.015),
+                                      ),
+                                      Text(
+                                        hip_hop[index]['type'],
+                                        style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: height * 0.012),
+                                      ),
                                     ],
                                   ),
-                                  IconButton(onPressed: (){
-
-                                  }, icon: Icon(Icons.play_circle,color: Colors.lightBlueAccent,))
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.play_circle,
+                                        color: Colors.lightBlueAccent,
+                                      ))
                                 ],
                               ),
                             ],
@@ -361,65 +420,73 @@ class _page_oneState extends State<page_one>with TickerProviderStateMixin {
                   ],
                 ),
               ),
-
               SizedBox(
-                height: height*0.01,
+                height: height * 0.01,
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Recently Play",style: TextStyle(fontSize: height*0.022,fontWeight: FontWeight.w700),),
-                  InkWell(onTap: (){
-
-                  },child: Text("See all",style: TextStyle(fontWeight: FontWeight.w400,fontSize: height*0.017),)
-                  )
+                  Text(
+                    "Recently Play",
+                    style: TextStyle(
+                        fontSize: height * 0.022, fontWeight: FontWeight.w700),
+                  ),
+                  InkWell(
+                      onTap: () {},
+                      child: Text(
+                        "See all",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: height * 0.017),
+                      ))
                 ],
               ),
-
               Expanded(
                 child: ListView.builder(
-                  padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15),
                     itemCount: populor.length,
-                    itemBuilder: (context,index) {
-                    AssetImage image = populor[index]['img'];
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 16.0),
-                    padding: EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.lightBlue.shade50,
-                      borderRadius: BorderRadius.circular(8.0),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //     color: Colors.grey.withOpacity(0.5),
-                      //     spreadRadius: 2,
-                      //     blurRadius: 5,
-                      //     offset: Offset(0, 6),
-                      //   ),
-                      // ],
-                    ),
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    itemBuilder: (context, index) {
+                      AssetImage image = recommendation[index]['img'];
+                      return Container(
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.lightBlue.shade50,
+                          // image: DecorationImage(image: image,fit: BoxFit.fill),
+                          borderRadius: BorderRadius.circular(8.0),
+                          // boxShadow: [
+                          //   BoxShadow(
+                          //     color: Colors.grey,
+                          //     spreadRadius: 1,
+                          //     blurRadius: 5,
+                          //     offset: Offset(0, 1),
+                          //   ),
+                          // ],
+                        ),
+                        child: Row(
                           children: [
-                            Text(
-                              populor[index]['name'],
-                              style: TextStyle(
-                                fontSize: height*0.019,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              'Items: ${populor[index]['type']}',
-                              style: TextStyle(fontSize: height*0.014,color: Colors.grey),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  populor[index]['name'],
+                                  style: TextStyle(
+                                    fontSize: height * 0.019,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Items: ${populor[index]['type']}',
+                                  style: TextStyle(
+                                      fontSize: height * 0.014,
+                                      color: Colors.grey),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  );
-                }),
+                      );
+                    }),
               )
             ],
           ),

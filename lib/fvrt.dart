@@ -1,72 +1,113 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class menu extends StatefulWidget {
+class fvrt extends StatefulWidget {
   @override
-  _PopupTextExampleState createState() => _PopupTextExampleState();
+  State<fvrt> createState() => _fvrtState();
 }
 
-class _PopupTextExampleState extends State<menu> {
-  late TextEditingController _controller;
-  bool _showTextField = false;
-  IconData _icon = Icons.add;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class _fvrtState extends State<fvrt> {
   @override
   Widget build(BuildContext context) {
+
+    var height = MediaQuery.sizeOf(context).height;
+    var width = MediaQuery.sizeOf(context).width;
+
+    bool isFavorite = false;
+
+    FaIcon icon = FaIcon(FontAwesomeIcons.heart);
+
+    List<Map<String,dynamic>> deatils = [
+      {
+        "name": "Dailamo Dailamo",
+        "subtitle" : "Vijay Annoty"
+      },
+      {
+        "name": "Saara Kaatrae",
+        "subtitle" : "S.P. Balasubra"
+      },
+      {
+        "name": "Marundhaani",
+        "subtitle" : "Nakesh Aziz, Anthony Daasan"
+      },
+      {
+        "name": "Oru Devadhai",
+        "subtitle" : "Roopkumar Rathod"
+      },
+      {
+        "name": "Marun",
+        "subtitle" : "Sangeetha Rajeshwaran"
+      },
+    ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Popup Text Example'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          IconButton(
-            icon: Icon(_icon),
-            onPressed: () {
-              setState(() {
-                // Toggle the visibility of the TextField
-                _showTextField = !_showTextField;
-                // Change the icon
-                _icon = _showTextField ? Icons.remove : Icons.add;
-              });
-            },
-          ),
-          if (_showTextField)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                controller: _controller,
-                decoration: InputDecoration(
-                  hintText: 'Enter your text...',
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.check),
-                    onPressed: () {
-                      // Process the entered text
-                      print('Entered text: ${_controller.text}');
-                      // Clear the text field
-                      _controller.clear();
-                      // Hide the text field
-                      setState(() {
-                        _showTextField = false;
-                        _icon = Icons.add; // Reset the icon
-                      });
-                    },
+      body: Center(
+        child: Container(
+          width: width*0.9,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(onPressed: () {
+
+                  }, icon: FaIcon(FontAwesomeIcons.heart)
                   ),
-                ),
+
+                  CircleAvatar(
+                    radius: height*0.08,
+                    backgroundImage: AssetImage("assets/images/album1.jpeg"),
+                  ),
+
+                  IconButton(onPressed: () {
+
+                  }, icon: FaIcon(FontAwesomeIcons.ellipsisVertical))
+                ],
               ),
-            ),
-        ],
+
+              SizedBox(
+                height: height*0.02,
+              ),
+
+              Container(
+                height: height*0.6,
+                child: ListView.builder(
+                    itemCount: deatils.length,
+                    itemBuilder: (context,index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                               Text(deatils[index]["name"],style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18),),
+                               Text(deatils[index]["subtitle"],style: TextStyle(color: Colors.grey),),
+                              ]),
+                          IconButton(
+                            onPressed: () {
+
+                            },
+                            icon: Icon(Icons.play_circle,color: Colors.lightBlueAccent,size: 28,),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                }),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
