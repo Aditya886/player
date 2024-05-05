@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:player/notification.dart';
 
 class page_one extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _page_oneState extends State<page_one> with TickerProviderStateMixin {
   List<Map<String, dynamic>> recommendation = [
     {
       "img": AssetImage("assets/images/album.jpeg"),
-      "name": "Friday party",
+      "name": "Friday partyy",
       "type": "Party mood!"
     },
     {
@@ -25,6 +26,10 @@ class _page_oneState extends State<page_one> with TickerProviderStateMixin {
       "type": "Holiday mood!"
     },
     {
+      "img": AssetImage("assets/images/alnum3.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },  {
       "img": AssetImage("assets/images/alnum3.jpeg"),
       "name": "Workout",
       "type": "Fresh mood!"
@@ -74,6 +79,38 @@ class _page_oneState extends State<page_one> with TickerProviderStateMixin {
       "img": AssetImage("assets/images/album11.jpeg"),
       "name": "Workout",
       "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
+    },{
+      "img": AssetImage("assets/images/album11.jpeg"),
+      "name": "Workout",
+      "type": "Fresh mood!"
     },
   ];
 
@@ -109,344 +146,360 @@ class _page_oneState extends State<page_one> with TickerProviderStateMixin {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Center(
-        child: Container(
-          width: width * 0.9,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Hello, User",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: height * 0.03),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: width*0.03),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: height * 0.02,
                 ),
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "What do you want to hear today?",
-                  style: TextStyle(fontSize: height * 0.02),
-                ),
-              ),
-              SizedBox(
-                height: height * 0.008,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  hintText: "Search",
-                  suffixIcon: Icon(Icons.mic),
-                  contentPadding: EdgeInsets.symmetric(vertical: height * 0.01),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide:
-                        BorderSide(color: Colors.lightBlueAccent, width: 2),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide:
-                        BorderSide(color: Colors.grey.shade300, width: 2),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                  child: Align(
-                alignment: Alignment.centerLeft,
-                child: TabBar(
-                  isScrollable: true,
-                  tabAlignment: TabAlignment.start,
-                  labelColor: Colors.lightBlueAccent,
-                  indicatorColor: Colors.lightBlueAccent,
-                  unselectedLabelColor: Colors.grey,
-                  controller: _tabController,
-                  tabs: [
-                    Tab(text: "Recommendation"),
-                    Tab(text: "Latest"),
-                    Tab(text: "Popular"),
-                    Tab(text: "Hip-Hop"),
-                  ],
-                ),
-              )),
-              Container(
-                width: width * 0.9,
-                height: height * 0.24,
-                child: TabBarView(
-                  controller: _tabController,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ListView.builder(
-                      itemCount: recommendation.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) {
-                        AssetImage image = recommendation[index]['img'];
-                        return Container(
-                          height: height * 0.18,
-                          width: width * 0.35,
-                          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  color: Colors.lightGreenAccent,
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: image,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        recommendation[index]['name'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: height * 0.015),
-                                      ),
-                                      Text(
-                                        recommendation[index]['type'],
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: height * 0.012),
-                                      ),
-                                    ],
-                                  ),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.play_circle,
-                                        color: Colors.lightBlueAccent,
-                                      ))
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Hello, User",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: height * 0.03),
+                        ),
+                        Text(
+                          "What do you want to hear today?",
+                          style: TextStyle(fontSize: height * 0.02),
+                        ),
+                      ],
                     ),
-                    ListView.builder(
-                      itemCount: latest.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) {
-                        AssetImage image = latest[index]['img'];
-                        return Container(
-                          height: height * 0.18,
-                          width: width * 0.4,
-                          margin:
-                              EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  color: Colors.lightGreenAccent,
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: image,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        latest[index]['name'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: height * 0.015),
-                                      ),
-                                      Text(
-                                        latest[index]['type'],
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: height * 0.012),
-                                      ),
-                                    ],
-                                  ),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.play_circle,
-                                        color: Colors.lightBlueAccent,
-                                      ))
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                    ListView.builder(
-                      itemCount: populor.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) {
-                        AssetImage image = populor[index]['img'];
-                        return Container(
-                          height: height * 0.18,
-                          width: width * 0.4,
-                          margin:
-                              EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  color: Colors.lightGreenAccent,
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: image,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        populor[index]['name'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: height * 0.015),
-                                      ),
-                                      Text(
-                                        populor[index]['type'],
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: height * 0.012),
-                                      ),
-                                    ],
-                                  ),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.play_circle,
-                                        color: Colors.lightBlueAccent,
-                                      ))
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                    ListView.builder(
-                      itemCount: hip_hop.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (_, index) {
-                        AssetImage image = hip_hop[index]['img'];
-                        return Container(
-                          height: height * 0.18,
-                          width: width * 0.4,
-                          margin:
-                              EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  color: Colors.lightGreenAccent,
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: image,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        hip_hop[index]['name'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: height * 0.015),
-                                      ),
-                                      Text(
-                                        hip_hop[index]['type'],
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: height * 0.012),
-                                      ),
-                                    ],
-                                  ),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.play_circle,
-                                        color: Colors.lightBlueAccent,
-                                      ))
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => notification()));
+                    }, icon: Icon(Icons.notifications))
                   ],
                 ),
-              ),
-              SizedBox(
-                height: height * 0.01,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Recently Play",
-                    style: TextStyle(
-                        fontSize: height * 0.022, fontWeight: FontWeight.w700),
+                SizedBox(
+                  height: height * 0.008,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    hintText: "Search",
+                    suffixIcon: Icon(Icons.mic),
+                    contentPadding: EdgeInsets.symmetric(vertical: height * 0.01),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide:
+                          BorderSide(color: Colors.lightBlueAccent, width: 2),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide:
+                          BorderSide(color: Colors.grey.shade300, width: 2),
+                    ),
                   ),
-                  InkWell(
-                      onTap: () {},
+                ),
+                SizedBox(height: 20),
+                Container(
+                    child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TabBar(
+                    isScrollable: true,
+                    tabAlignment: TabAlignment.start,
+                    labelColor: Colors.lightBlueAccent,
+                    indicatorColor: Colors.lightBlueAccent,
+                    unselectedLabelColor: Colors.grey,
+                    controller: _tabController,
+                    tabs: [
+                      Tab(text: "Recommendation"),
+                      Tab(text: "Latest"),
+                      Tab(text: "Popular"),
+                      Tab(text: "Hip-Hop"),
+                    ],
+                  ),
+                )),
+                Container(
+                  width: width * 1,
+                  height: width*0.48,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      ListView.builder(
+                        itemCount: recommendation.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) {
+                          AssetImage image = recommendation[index]['img'];
+                          return Container(
+                            height: height * 0.18,
+                            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: width*0.3,
+                                  width: width*0.3,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightGreenAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: image,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          recommendation[index]['name'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: height * 0.015),
+                                        ),
+                                        Text(
+                                          recommendation[index]['type'],
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: height * 0.012),
+                                        ),
+                                      ],
+                                    ),
+        
+                                    IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.play_circle,
+                                          color: Colors.lightBlueAccent,
+                                        ))
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      ListView.builder(
+                        itemCount: latest.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) {
+                          AssetImage image = latest[index]['img'];
+                          return Container(
+                            height: height * 0.18,
+                            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: width*0.3,
+                                  width: width*0.3,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightGreenAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: image,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          latest[index]['name'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: height * 0.015),
+                                        ),
+                                        Text(
+                                          latest[index]['type'],
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: height * 0.012),
+                                        ),
+                                      ],
+                                    ),
+        
+                                    IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.play_circle,
+                                          color: Colors.lightBlueAccent,
+                                        ))
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      ListView.builder(
+                        itemCount: populor.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) {
+                          AssetImage image = populor[index]['img'];
+                          return Container(
+                            height: height * 0.18,
+                            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: width*0.3,
+                                  width: width*0.3,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightGreenAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: image,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          populor[index]['name'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: height * 0.015),
+                                        ),
+                                        Text(
+                                          populor[index]['type'],
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: height * 0.012),
+                                        ),
+                                      ],
+                                    ),
+        
+                                    IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.play_circle,
+                                          color: Colors.lightBlueAccent,
+                                        ))
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      ListView.builder(
+                        itemCount: hip_hop.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) {
+                          AssetImage image = hip_hop[index]['img'];
+                          return Container(
+                            height: height * 0.18,
+                            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: width*0.3,
+                                  width: width*0.3,
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightGreenAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: image,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          hip_hop[index]['name'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: height * 0.015),
+                                        ),
+                                        Text(
+                                          hip_hop[index]['type'],
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: height * 0.012),
+                                        ),
+                                      ],
+                                    ),
+        
+                                    IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.play_circle,
+                                          color: Colors.lightBlueAccent,
+                                        ))
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: height * 0.01,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
                       child: Text(
-                        "See all",
+                        "Recently Play",
+                       overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: height * 0.017),
-                      ))
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
+                            fontSize: height * 0.022, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    InkWell(
+                        onTap: () {},
+                        child: Text(
+                          "See all",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: height * 0.017),
+                        ))
+                  ],
+                ),
+                ListView.builder(
                     padding: EdgeInsets.only(top: 15),
                     itemCount: populor.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      AssetImage image = recommendation[index]['img'];
+                      // AssetImage image = recommendation[index]['img'];
                       return Container(
                         margin: EdgeInsets.all(5),
                         padding: EdgeInsets.all(10),
@@ -486,9 +539,9 @@ class _page_oneState extends State<page_one> with TickerProviderStateMixin {
                           ],
                         ),
                       );
-                    }),
-              )
-            ],
+                    })
+              ],
+            ),
           ),
         ),
       ),

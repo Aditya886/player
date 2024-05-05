@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:player/Login.dart';
 
 class profile extends StatefulWidget {
   @override
@@ -43,10 +44,10 @@ class _profileState extends State<profile> {
     var width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Center(
+      body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            width: width*0.85,
+            margin: EdgeInsets.symmetric(horizontal: width*0.06),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -318,7 +319,38 @@ class _profileState extends State<profile> {
                        },
                      );
                    }),
-                  )
+                  ),
+
+                SizedBox(
+                  height: height*0.02,
+                ),
+
+                Align(
+                  alignment: Alignment.center,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => login()));
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                    child: Container(
+                      width: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Log out",
+                            style: TextStyle(color: Colors.red,fontWeight: FontWeight.w800,fontSize: 18),
+                          ),
+                          Icon(Icons.exit_to_app_sharp,color: Colors.red,),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
               ],
             ),
           ),

@@ -20,11 +20,11 @@ class _loginState extends State<login> {
         .sizeOf(context)
         .width;
     return Scaffold(
-      body: Container(
+      body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Container(
-                width: width * 0.91,
+                margin: EdgeInsets.symmetric(horizontal: width*0.04),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,21 +40,21 @@ class _loginState extends State<login> {
                       child: Icon(Icons.music_note, color: Colors.grey.shade700,
                         size: 30,),
                     ),
-
+        
                     SizedBox(
                       height: height * 0.01,
                     ),
-
+        
                     Text("Music World!",
                       style: TextStyle(color: Colors.blue,
                           fontSize: 20,
                           fontWeight: FontWeight.w500),
                     ),
-
+        
                     SizedBox(
                       height: height * 0.01,
                     ),
-
+        
                     Text("Sign in to your account",
                       style: TextStyle(fontSize: 25,
                           fontWeight: FontWeight.w700,
@@ -63,7 +63,7 @@ class _loginState extends State<login> {
                     SizedBox(
                       height: height * 0.03,
                     ),
-
+        
                     TextField(
                       decoration: InputDecoration(
                           fillColor: Colors.grey.shade300,
@@ -89,11 +89,11 @@ class _loginState extends State<login> {
                           )
                       ),
                     ),
-
+        
                     SizedBox(
                       height: height * 0.01,
                     ),
-
+        
                     TextField(
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
@@ -119,22 +119,22 @@ class _loginState extends State<login> {
                           )
                       ),
                     ),
-
+        
                     SizedBox(
                       height: height * 0.01,
                     ),
-
+        
                     Align(
                       alignment: Alignment.centerRight,
                       child: InkWell(onTap: () {
-
+        
                       },child: Text("Forget Password",style: TextStyle(),),),
                     ),
-
+        
                     SizedBox(
                       height: height * 0.02,
                     ),
-
+        
                     InkWell(
                       onTap: () {
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => home()));
@@ -148,7 +148,7 @@ class _loginState extends State<login> {
                         // });
                       },
                       child: Container(
-                        height: height * 0.06,
+                        height: height>width ?  width*0.125 : height*0.13,
                         width: width * 1,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(colors: [
@@ -166,13 +166,13 @@ class _loginState extends State<login> {
                         ),
                       ),
                     ),
-
+        
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(child: Divider(thickness: 1,
-                          height: height * 0.09,
+                          height: height>width ? height*0.09 : height*0.25,
                           color: Colors.grey,)),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -184,9 +184,9 @@ class _loginState extends State<login> {
                           color: Colors.grey,)),
                       ],
                     ),
-
+        
                     Container(
-                      height: height * 0.06,
+                      height: height>width ?  width*0.125 : height*0.13,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
@@ -206,11 +206,11 @@ class _loginState extends State<login> {
                         ],
                       ),
                     ),
-
+        
                     SizedBox(
-                      height: height * 0.04,
+                      height: height>width ? height*0.04 : height*0.08,
                     ),
-
+        
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,

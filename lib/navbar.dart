@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:player/download.dart';
 import 'package:player/fvrt.dart';
 import 'package:player/main_screen.dart';
+import 'package:player/play.dart';
 import 'package:player/profile.dart';
 
 class home extends StatefulWidget {
@@ -40,13 +41,7 @@ class _homeState extends State<home> {
 
     fvrt(),
 
-    Center(
-      child: Text(
-        "Not played!",
-        style: TextStyle(
-            fontSize: 25, fontWeight: FontWeight.w600, color: Colors.red),
-      ),
-    ),
+    play(),
 
     download(),
 
@@ -66,6 +61,8 @@ class _homeState extends State<home> {
             ),
 
             type: BottomNavigationBarType.fixed,
+            unselectedFontSize: 0,
+            selectedFontSize: 0,
             items: [
               BottomNavigationBarItem(
                   icon: FaIcon(FontAwesomeIcons.house,

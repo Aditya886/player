@@ -54,9 +54,11 @@ class _downloadState extends State<download> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Downloads",style: TextStyle(letterSpacing: 1),),
+        title: Text("Downloads",style: TextStyle(letterSpacing: 3,fontWeight: FontWeight.w600),),
         centerTitle: true,
         backgroundColor: Colors.lightBlueAccent.shade100,
+        elevation: 8,
+        shadowColor: Colors.lightBlueAccent,
       ),
       body: Center(
         child: Container(
@@ -82,7 +84,7 @@ class _downloadState extends State<download> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    height: height*0.08,
+                    height: width*0.17,
                       width: width*0.18,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
