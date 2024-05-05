@@ -57,8 +57,6 @@ class _downloadState extends State<download> {
         title: Text("Downloads",style: TextStyle(letterSpacing: 3,fontWeight: FontWeight.w600),),
         centerTitle: true,
         backgroundColor: Colors.lightBlueAccent.shade100,
-        elevation: 8,
-        shadowColor: Colors.lightBlueAccent,
       ),
       body: Center(
         child: Container(
