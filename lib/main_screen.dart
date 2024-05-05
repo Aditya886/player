@@ -185,9 +185,10 @@ class _page_oneState extends State<page_one> with TickerProviderStateMixin {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: Icon(Icons.search,color: Colors.grey,),
                     hintText: "Search",
-                    suffixIcon: Icon(Icons.mic),
+                    hintStyle: TextStyle(color: Colors.grey.shade500),
+                    suffixIcon: Icon(Icons.mic,color: Colors.grey,),
                     contentPadding: EdgeInsets.symmetric(vertical: height * 0.01),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -507,14 +508,6 @@ class _page_oneState extends State<page_one> with TickerProviderStateMixin {
                           color: Colors.lightBlue.shade50,
                           // image: DecorationImage(image: image,fit: BoxFit.fill),
                           borderRadius: BorderRadius.circular(8.0),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //     color: Colors.grey,
-                          //     spreadRadius: 1,
-                          //     blurRadius: 5,
-                          //     offset: Offset(0, 1),
-                          //   ),
-                          // ],
                         ),
                         child: Row(
                           children: [

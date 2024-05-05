@@ -24,7 +24,7 @@ class _loginState extends State<login> {
         child: Center(
           child: SingleChildScrollView(
             child: Container(
-                margin: EdgeInsets.symmetric(horizontal: width*0.04),
+                margin: EdgeInsets.symmetric(horizontal: width*0.04,vertical: width*0.03),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
