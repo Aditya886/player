@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:player/create.dart';
+import 'package:player/forget_password.dart';
 import 'package:player/main_screen.dart';
 import 'package:player/navbar.dart';
 
@@ -13,12 +14,13 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery
-        .sizeOf(context)
-        .height;
-    var width = MediaQuery
-        .sizeOf(context)
-        .width;
+
+    var height = MediaQuery.sizeOf(context).height;
+    var width = MediaQuery.sizeOf(context).width;
+
+    final TextEditingController _email = TextEditingController();
+    final TextEditingController _login_password = TextEditingController();
+
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -64,29 +66,39 @@ class _loginState extends State<login> {
                       height: height * 0.03,
                     ),
         
-                    TextField(
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade300,
-                          filled: true,
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: height * 0.019),
-                          prefixIcon: Icon(Icons.mail),
-                          hintText: "Email",
-                          hintStyle: TextStyle(letterSpacing: 2),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade400,
-                                  width: 2
-                              )
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                  color: Colors.lightBlueAccent,
-                                  width: 2
-                              )
-                          )
+                    Form(
+                      autovalidateMode: AutovalidateMode.always,
+                      child: TextFormField(
+                        controller: _email,
+                        validator: (value) {
+                          if (value == null || !value.contains('@gmail.')) {
+                            return 'Please enter a valid Gmail address';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            fillColor: Colors.grey.shade300,
+                            filled: true,
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: height * 0.019),
+                            prefixIcon: Icon(Icons.mail),
+                            hintText: "Email",
+                            hintStyle: TextStyle(letterSpacing: 2),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                    color: Colors.grey.shade400,
+                                    width: 2
+                                )
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                    color: Colors.lightBlueAccent,
+                                    width: 2
+                                )
+                            )
+                        ),
                       ),
                     ),
         
@@ -94,29 +106,43 @@ class _loginState extends State<login> {
                       height: height * 0.01,
                     ),
         
-                    TextField(
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: height * 0.019),
-                          fillColor: Colors.grey.shade300,
-                          filled: true,
-                          prefixIcon: Icon(Icons.lock),
-                          hintText: "Password",
-                          hintStyle: TextStyle(letterSpacing: 2),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade400,
-                                  width: 2
-                              )
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
-                                  color: Colors.lightBlueAccent,
-                                  width: 2
-                              )
-                          )
+                    Form(
+                      autovalidateMode: AutovalidateMode.always,
+                      child: TextFormField(
+                        controller: _login_password,
+                        validator: (value) {
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: height * 0.019),
+                            fillColor: Colors.grey.shade300,
+                            filled: true,
+                            prefixIcon: Icon(Icons.lock),
+                            hintText: "Password",
+                            hintStyle: TextStyle(letterSpacing: 2),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                    color: Colors.grey.shade400,
+                                    width: 2
+                                )
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                    color: Colors.red,
+                                    width: 2
+                                )
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                    color: Colors.lightBlueAccent,
+                                    width: 2
+                                )
+                            )
+                        ),
                       ),
                     ),
         
@@ -127,7 +153,7 @@ class _loginState extends State<login> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: InkWell(onTap: () {
-        
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => password()));
                       },child: Text("Forget Password",style: TextStyle(),),),
                     ),
         
@@ -138,14 +164,6 @@ class _loginState extends State<login> {
                     InkWell(
                       onTap: () {
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => home()));
-                        // setState(() {
-                        //   BoxDecoration(
-                        //       gradient: LinearGradient(colors: [
-                        //         Color(0xff8fd3f4),
-                        //         Color(0xff84fab0)
-                        //       ])
-                        //   );
-                        // });
                       },
                       child: Container(
                         height: height>width ?  width*0.125 : height*0.13,

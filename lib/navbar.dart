@@ -80,12 +80,12 @@ class _homeState extends State<home> {
                   ),
                   label: ""),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.download,
+                  icon: FaIcon(FontAwesomeIcons.download,
                       // color: Colors.grey
                   ),
                   label: ""),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle,
+                  icon: FaIcon(FontAwesomeIcons.user,
                       // color: Colors.grey
                   ),
                   label: ""),

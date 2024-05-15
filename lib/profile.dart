@@ -9,7 +9,9 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
-  late TextEditingController _controller;
+  late TextEditingController _name;
+  // late TextEditingController _mail;
+
   bool name = false;
   bool mail = false;
   bool lang = false;
@@ -29,12 +31,12 @@ class _profileState extends State<profile> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
+    _name = TextEditingController();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _name.dispose();
     super.dispose();
   }
 
@@ -65,7 +67,7 @@ class _profileState extends State<profile> {
           
                 Align(
                   alignment: Alignment.center,
-                  child: Text("User",
+                  child: Text("User ${_name.text}",
                     style: TextStyle(fontSize: height*0.034,fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -104,17 +106,16 @@ class _profileState extends State<profile> {
           
                 if (name)
                   TextField(
-                    controller: _controller,
+                    controller: _name,
                     decoration: InputDecoration(
                       hintText: 'Enter your name...',
                       suffixIcon: IconButton(
                         icon: Icon(Icons.check),
                         onPressed: () {
-                          // Process the entered text
-                          print('${_controller.text}');
+                          print('${_name.text}');
                           // Clear the text field
-                          _controller.clear();
-                          // Hide the text field
+                          // _name.clear();
+
                           setState(() {
                             name = false;
                             icon = !name ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up;
@@ -146,16 +147,16 @@ class _profileState extends State<profile> {
           
                 if (mail)
                   TextField(
-                    controller: _controller,
+                    // controller: _mail,
                     decoration: InputDecoration(
                       hintText: 'Enter your Email',
                       suffixIcon: IconButton(
                         icon: Icon(Icons.check),
                         onPressed: () {
                           // Process the entered text
-                          print('${_controller.text}');
+                          // print('${_mail.text}');
                           // Clear the text field
-                          _controller.clear();
+                          // _mail.clear();
                           // Hide the text field
                           setState(() {
                             mail = false;
